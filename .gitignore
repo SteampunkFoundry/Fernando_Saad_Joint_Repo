@@ -1,0 +1,13 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+
+/.terraform.lock.hcl
+/terraform.tfstate
+/.terraform/providers/registry.terraform.io/hashicorp/aws/5.9.0/windows_amd64/terraform-provider-aws_v5.9.0_x5.exe
+/terraform.tfstate.backup

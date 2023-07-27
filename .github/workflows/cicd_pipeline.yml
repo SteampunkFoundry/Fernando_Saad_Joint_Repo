@@ -21,7 +21,7 @@ jobs:
 
     - name: Run tests
       run: |
-        echo "Running tests..."
+        echo "Running tests!"
         # Your testing steps go here
 
   build:

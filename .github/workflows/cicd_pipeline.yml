@@ -84,4 +84,4 @@ jobs:
 
     - name: Deploy to EC2
       run: |
-        ssh -o StrictHostKeyChecking=no ec2-user@ec2-54-159-173-206.compute-1.amazonaws.com "docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} && docker pull ${{ env.DOCKER_IMAGE }} && docker stop fernandosteampunkproject || true && docker rm -f fernandosteampunkproject || true && docker run -d -p 80:80 --name fernandosteampunkproject ${{ env.DOCKER_IMAGE }}"
+        ssh -o StrictHostKeyChecking=no ec2-user@ec2-35-172-118-192.compute-1.amazonaws.com "docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} && docker pull ${{ env.DOCKER_IMAGE }} && docker stop fernandosteampunkproject || true && docker rm -f fernandosteampunkproject || true && docker run -d -p 80:80 --name fernandosteampunkproject ${{ env.DOCKER_IMAGE }}"

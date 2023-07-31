@@ -3,14 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <title>My Project for Team Punk</title>
-    <!-- remember to change src to "/js/FDAapiScript.js"-->
-    <script src="/FDAapiScript.js"></script>
+    <script src="FDAapiScript.js"></script>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
 <body>
-    <label for="zipCode">Enter a Zip Code:</label>
-    <input type="text" id="zipCode" name="zipCode">
-    <button type="button" onclick="getReports()">Get Reports</button>
+<label for="zipCode">Enter a Zip Code:</label>
+<input type="text" id="zipCode" name="zipCode">
+<button type="button" onclick="getReports()">Get Reports</button>
 
-    <div id="result"></div>
+<table>
+    <thead>
+    <tr>
+        <th>Report Number</th>
+        <th>Product Description</th>
+        <th>Reason for Recall</th>
+    </tr>
+    </thead>
+    <tbody id="result">
+    </tbody>
+</table>
 </body>
 </html>

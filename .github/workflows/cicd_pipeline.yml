@@ -19,16 +19,17 @@ jobs:
     - name: Check out code
       uses: actions/checkout@v2
 
-    - name: Set up JDK
+    - name: Set up JDK 1.11
       uses: actions/setup-java@v2
       with:
         java-version: '11'
         distribution: 'adopt'
 
-    - name: Install dependencies and run tests
+    - name: Run tests
       run: |
+        echo "Running tests..."
         cd tests
-        mvn clean verify
+        mvn test
 
   build:
     name: Build

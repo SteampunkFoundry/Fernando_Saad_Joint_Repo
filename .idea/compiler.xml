@@ -11,6 +11,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="selenium-example" target="11" />
+      <module name="selenium-tests" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

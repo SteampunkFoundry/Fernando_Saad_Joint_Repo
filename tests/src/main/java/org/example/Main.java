@@ -47,7 +47,6 @@ public class Main {
     public void tearDown(ITestResult result) throws IOException {
         TakesScreenshot screenshot = (TakesScreenshot)driver;
         File source = screenshot.getScreenshotAs(OutputType.FILE);
-        System.out.println(projectPath);
         FileUtils.copyFile(source, new File(projectPath+ "/screenshots/" + result.getMethod().getMethodName() + ".png"));
         driver.quit();
     }

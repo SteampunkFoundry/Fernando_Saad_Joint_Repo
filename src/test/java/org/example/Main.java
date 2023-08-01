@@ -17,7 +17,6 @@ import java.io.IOException;
 public class Main {
 
     WebDriver driver;
-    String projectPath;
 
     @BeforeMethod
     public void loadSite() {
@@ -34,7 +33,7 @@ public class Main {
     public void tearDown(ITestResult result) throws IOException {
         TakesScreenshot screenshot = (TakesScreenshot)driver;
         File source = screenshot.getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(source, new File(projectPath + "/screenshots/" + result.getMethod().getMethodName() + ".png"));
+        FileUtils.copyFile(source, new File("screenshots/" + result.getMethod().getMethodName() + ".png"));
         driver.quit();
     }
 }

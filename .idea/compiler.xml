@@ -10,12 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="selenium-example" target="11" />
-<<<<<<< HEAD
-      <module name="tests" target="11" />
-=======
       <module name="selenium-tests" target="11" />
->>>>>>> origin/testing
     </bytecodeTargetLevel>
   </component>
 </project>

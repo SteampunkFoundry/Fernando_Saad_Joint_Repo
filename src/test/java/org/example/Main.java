@@ -18,7 +18,7 @@ public class Main {
 
     WebDriver driver;
     String projectPath;
-    //before method which loads up site (headless)
+
     @BeforeMethod
     public void loadSite() {
         WebDriverManager.chromedriver().setup();
@@ -26,28 +26,15 @@ public class Main {
         options.setHeadless(true);
         driver = new ChromeDriver(options);
 
-        //**used to get path to index.html, which will be used by the driver**
-        //get current path
-        String currentPath = System.getProperty("user.dir");
-
-        //file leading to current path
-        File tempFile = new File(currentPath);
-
-        //get parent file of tempfile
-        File projectPathFile = tempFile.getParentFile();
-        //get parent pathway (same as project)
-        projectPath = projectPathFile.getAbsolutePath();
-        //concatenate with /index.html
-        String indexPath = (projectPath + "/index.html");
-        driver.get(indexPath);
+        // Navigate directly to the URL of your deployed application
+        driver.get("http://35.172.118.192/");
     }
 
-    //after method that takes screenshot, saves screenshot into screenshots folder, and closes driver
     @AfterMethod
     public void tearDown(ITestResult result) throws IOException {
         TakesScreenshot screenshot = (TakesScreenshot)driver;
         File source = screenshot.getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(source, new File(projectPath+ "/screenshots/" + result.getMethod().getMethodName() + ".png"));
+        FileUtils.copyFile(source, new File(projectPath + "/screenshots/" + result.getMethod().getMethodName() + ".png"));
         driver.quit();
     }
 }

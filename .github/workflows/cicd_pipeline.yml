@@ -12,28 +12,8 @@ env:
   DOCKER_IMAGE: fquezado/fernandosteampunkproject:${{ github.run_id }}
 
 jobs:
-  test:
-    name: Test
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Check out code
-      uses: actions/checkout@v2
-
-    - name: Set up JDK 1.11
-      uses: actions/setup-java@v2
-      with:
-        java-version: '11'
-        distribution: 'adopt'
-
-    - name: Run tests
-      run: |
-        echo "Running tests..."
-        mvn test
-
   build:
     name: Build
-    needs: test
     runs-on: ubuntu-latest
 
     steps:
@@ -92,3 +72,23 @@ jobs:
     - name: Deploy to EC2
       run: |
         ssh -o StrictHostKeyChecking=no ec2-user@ec2-35-172-118-192.compute-1.amazonaws.com "docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} && docker pull ${{ env.DOCKER_IMAGE }} && docker stop fernandosteampunkproject || true && docker rm -f fernandosteampunkproject || true && docker run -d -p 80:80 --name fernandosteampunkproject ${{ env.DOCKER_IMAGE }}"
+
+  test:
+    name: Test
+    needs: deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Set up JDK 1.11
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+
+      - name: Run tests
+        run: |
+            echo "Running tests..."
+            mvn test

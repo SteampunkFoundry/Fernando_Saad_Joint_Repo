@@ -35,5 +35,15 @@ public class Main {
         File source = screenshot.getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(source, new File("screenshots/" + result.getMethod().getMethodName() + ".png"));
         driver.quit();
+
+        /* if(!result.isSuccess()){
+            try{
+                TakesScreenshot screenshot = (TakesScreenshot)driver;
+                File source = screenshot.getScreenshotAs(OutputType.FILE);
+                FileUtils.copyFile(source, new File("screenshots/" + result.getMethod().getMethodName() + ".png"));
+            }catch(Exception e){
+                System.out.println("Exception:"+ e.getMessage());
+            }
+        } */
     }
 }

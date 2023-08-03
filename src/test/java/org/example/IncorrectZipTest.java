@@ -7,7 +7,6 @@ import static org.testng.Assert.assertEquals;
 
 
 public class IncorrectZipTest extends Main{
-    String expectedErrorMessage = ("Please enter a valid 5 digit ZIP code.");
 
     public void inputIntoZipBox(String input){
         //find the zipcode input box and input the parameter
@@ -18,9 +17,9 @@ public class IncorrectZipTest extends Main{
         submitButton.click();
     }
 
-    public void checkAlert(){
+    public void checkAlert(String expectedErrorMessage){
         String actualErrorMessage = driver.switchTo().alert().getText();
-        assertEquals(expectedErrorMessage, actualErrorMessage);
+        assertEquals(actualErrorMessage, expectedErrorMessage);
         driver.switchTo().alert().accept();
     }
 
@@ -28,27 +27,27 @@ public class IncorrectZipTest extends Main{
     @Test
     public void zipGreaterThanFive() {
         inputIntoZipBox("123456");
-        checkAlert();
+        checkAlert("Please enter a valid 5 digit ZIP code.");;
     }
 
     //check using zipcode with less than 5 digits
     @Test
     public void zipLessThanFive(){
         inputIntoZipBox("1234");
-        checkAlert();
+        checkAlert("Please enter a valid 5 digit ZIP code.");;
     }
 
     //check using letters
     @Test
     public void zipRandomLetters(){
         inputIntoZipBox("abcde");
-        checkAlert();
+        checkAlert("Please enter a valid 5 digit ZIP code.");;
     }
 
     //check using random symbols
     @Test
     public void zipRandomSymbols(){
         inputIntoZipBox("!@#$%");
-        checkAlert();
+        checkAlert("Please enter a valid 5 digit ZIP code.");;
     }
 }
